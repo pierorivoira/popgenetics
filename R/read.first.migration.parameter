@@ -1,0 +1,35 @@
+read.first.migration.parameter = function()
+{
+library(openxlsx)
+
+file_name = readline(prompt='Enter file name: ')
+extension = readline(prompt='Enter file extension: ')
+parameter = readline(prompt='Enter parameter (γ=ΘM or M=m/μ): ')
+nloci = as.numeric(readline(prompt='Please enter the number of loci: '))
+nbins = as.numeric(readline(prompt='Please enter the number of bins of the posterior distribution: '))
+npopulations = as.numeric(readline(prompt='Please enter the number of populations: '))
+nparameters = npopulations^2
+skipraws = nparameters+14
+firstrawdata = skipraws+1
+# la prima riga dell’area contenente i dati è firstrawdata 
+# la prima riga dell’area contenente il parametro 4 (locus 15) è 193653
+# quante righe devo saltare per arrivare lì?
+skipraws=skipraws+(nloci*nparameters*(nbins+1))+3*(nbins+1)
+firstrawpar4=skipraws+1
+lastrawpar4=firstrawpar4+(nbins-1)
+
+rows = as.numeric(c(firstrawpar4:lastrawpar4))
+cols = c(5,6)
+
+setwd('~/popgenetics/data')
+working_dir = getwd()
+path = paste(working_dir, file_name, sep='/')
+path = paste(path, '.', extension, sep='')
+first.migration.parameter=read.xlsx(xlsxFile=path,sheet = 1,rows=rows,cols=cols,colNames = FALSE)
+result = str(first.migration.parameter)
+return(parameter)
+return(result)
+print(paste("The kind of the first migration parameter is", parameter))
+print(paste("The structure of the first migration parameter is", result))
+
+}
