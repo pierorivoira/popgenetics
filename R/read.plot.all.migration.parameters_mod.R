@@ -1,4 +1,4 @@
-read.plot.all.migration.parameters = function()
+read.plot.all.migration.parameters_mod = function()
 {
 library(openxlsx)
 

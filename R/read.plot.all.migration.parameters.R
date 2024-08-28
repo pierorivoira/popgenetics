@@ -5,6 +5,7 @@ library(openxlsx)
 firstrawpar = NULL
 lastrawpar = NULL
 rows = NULL
+listraws = NULL
 migration.parameter = NULL
 param_microsat = NULL
 count_microsat = NULL
@@ -75,29 +76,35 @@ rows7 = rows6 + (nbins+1)
 rows8 = rows7 + (nbins+1)
 rows9 = rows8 + (nbins+1)
 
-migration.parameter5 = read.xlsx(xlsxFile=path,sheet = 1,rows=rows5,cols=cols,colNames = FALSE)
-migration.parameter6 = read.xlsx(xlsxFile=path,sheet = 1,rows=rows6,cols=cols,colNames = FALSE)
-migration.parameter7 = read.xlsx(xlsxFile=path,sheet = 1,rows=rows7,cols=cols,colNames = FALSE)
-migration.parameter8 = read.xlsx(xlsxFile=path,sheet = 1,rows=rows8,cols=cols,colNames = FALSE)
-migration.parameter9 = read.xlsx(xlsxFile=path,sheet = 1,rows=rows9,cols=cols,colNames = FALSE)
+listraws = list(rows5, rows6, rows7, rows8, rows9)
 
-param_microsat5 = migration.parameter5$X1
-param_microsat6 = migration.parameter6$X1
-param_microsat7 = migration.parameter7$X1
-param_microsat8 = migration.parameter8$X1
-param_microsat9 = migration.parameter9$X1
+listmigration.parameter = NULL
+listmigration.parameter = read.xlsx(xlsxFile=path,sheet = 1,rows=as.numeric(unlist(listraws[1])),cols=cols,colNames = FALSE)
 
-count_microsat5 = migration.parameter5$X2
-count_microsat6 = migration.parameter6$X2
-count_microsat7 = migration.parameter7$X2
-count_microsat8 = migration.parameter8$X2
-count_microsat9 = migration.parameter9$X2
+for(i in 2:(length(listraws)))
+{
+listmigration.parameter = c(listmigration.parameter, read.xlsx(xlsxFile=path,sheet = 1,rows=as.numeric(unlist(listraws[i])),cols=cols,colNames = FALSE))
+} 
 
-lines(param_microsat5,count_microsat5,type='l',lwd=line_width,col=(graph_color[1]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
-lines(param_microsat6,count_microsat6,type='l',lwd=line_width,col=(graph_color[2]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
-lines(param_microsat7,count_microsat7,type='l',lwd=line_width,col=(graph_color[3]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
-lines(param_microsat8,count_microsat8,type='l',lwd=line_width,col=(graph_color[4]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
-lines(param_microsat9,count_microsat9,type='l',lwd=line_width,col=(graph_color[5]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
+param_microsat = as.numeric(unlist(listmigration.parameter[1]))
+param_microsat5 = as.numeric(unlist(listmigration.parameter[1]))
+param_microsat6 = as.numeric(unlist(listmigration.parameter[3]))
+param_microsat7 = as.numeric(unlist(listmigration.parameter[5]))
+param_microsat8 = as.numeric(unlist(listmigration.parameter[7]))
+param_microsat9 = as.numeric(unlist(listmigration.parameter[9]))
+
+count_microsat5 = as.numeric(unlist(listmigration.parameter[2]))
+count_microsat6 = as.numeric(unlist(listmigration.parameter[4]))
+count_microsat7 = as.numeric(unlist(listmigration.parameter[6]))
+count_microsat8 = as.numeric(unlist(listmigration.parameter[8]))
+count_microsat9 = as.numeric(unlist(listmigration.parameter[10]))
+
+
+lines(param_microsat,count_microsat5,type='l',lwd=line_width,col=(graph_color[1]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
+lines(param_microsat,count_microsat6,type='l',lwd=line_width,col=(graph_color[2]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
+lines(param_microsat,count_microsat7,type='l',lwd=line_width,col=(graph_color[3]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
+lines(param_microsat,count_microsat8,type='l',lwd=line_width,col=(graph_color[4]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
+lines(param_microsat,count_microsat9,type='l',lwd=line_width,col=(graph_color[5]),xlab='M = m/μ',ylab='posterior density',cex.lab=2,cex.axis=2,ylim=c(0,max_y_limit))
 
 legend(400, 0.02, legend=c('France-CH → Piedmont', 'Valais → Piedmont', 'Piedmont → France-CH', 'Valais → France-CH', 'Piedmont → Valais', 'France-CH → Valais'), col=c('cyan', 'red', 'pink', 'white', 'green', 'blue'), lwd=5, lty=2:3, cex=2)
 
