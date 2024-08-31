@@ -1,1 +1,0 @@
-plot.quadr.appr = function()                                                           
