@@ -1,3 +1,6 @@
+#REFERENCE: 
+#Avise, J. C., Neigel, J. E., & Arnold, J. (1984). Demographic influences on mitochondrial DNA lineage survivorship in animal populations. Journal of Molecular evolution, 20, #99-105.
+
 probability.of.survival.2.or.more.lineages = function()
 {
 p = NULL
