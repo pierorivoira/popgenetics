@@ -1,5 +1,5 @@
 # popgenetics
-Welcome to R (future package) popgenetics!
+Welcome to R (future) package popgenetics!
 It includes two programs:
 1) plot.all.1.0
 2) probability.of.survival.2.or.more.lineages
