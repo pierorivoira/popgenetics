@@ -16,14 +16,14 @@ INSTALLATION AND DATA PREPARATION INSTRUCTIONS
 Download the program 
 file <plot.all.1.0>
 and the data file
-<bayesfile_raw.xlsx> 
+<bayesfile_msat_13_pop_16_temperature.xlsx> 
 from
 
 https://github.com/pierorivoira/popgenetics/blob/main/R/plot.all.1.0
 
 and
 
-https://github.com/pierorivoira/popgenetics/blob/main/data/bayesfile_raw.xlsx 
+https://github.com/pierorivoira/popgenetics/blob/main/data/bayesfile_msat_13_pop_16_temperature.xlsx 
 
 respectively
 
