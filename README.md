@@ -1,5 +1,4 @@
 # popgenetics
-< HEAD
 Welcome to R package popgenetics!
 =======
 Welcome to R (future) package popgenetics!
