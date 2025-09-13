@@ -58,7 +58,7 @@ EXAMPLE:
 [1] "plot.all()"
 [1] "PLEASE REMEMBER THAT THE DATA FILE MUST BE STORED IN '~/popgenetics/data' AND IT SHOULD BE AN EXCEL FILE (EXTENSION: 'xlsx')"
 [1] "YOU WILL BE ASKED TO ENTER AS MANY COLORS AS THERE ARE PARAMETERS"
-[1] "#################################################################################################################################################################################"
+"########################################################################################################################################################################"
 Please enter "y" if you want to continue or "n" to exit: y
 Please enter file name: bayesfile
 Please enter file extension: xlsx
